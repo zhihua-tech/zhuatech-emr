@@ -1,7 +1,13 @@
 /* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 package cn.zhuatech.emr.service;
 import jakarta.validation.constraints.*; import org.springframework.stereotype.Service; import java.util.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service public class MedicationSafetyService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result evaluate(Request r){
         List<String> alerts=new ArrayList<>(); int score=0;
         if(r.knownAllergyMatch()){score+=100;alerts.add("处方药物命中已知过敏记录");}
@@ -13,6 +19,12 @@ import jakarta.validation.constraints.*; import org.springframework.stereotype.S
         String status=score>=80?"BLOCK":score>=30?"REVIEW":"CLEAR"; if(alerts.isEmpty())alerts.add("未发现需要干预的用药安全信号");
         return new Result(Math.min(score,100),status,alerts);
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String prescriptionId,@NotNull Boolean knownAllergyMatch,@Pattern(regexp="(?i)NONE|MODERATE|SEVERE") String interactionSeverity,@NotNull Boolean duplicateTherapy,@NotNull Boolean renalImpairment,@NotNull Boolean renalDoseAdjusted,@NotNull Boolean medicationReconciled){}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(int riskScore,String status,List<String> alerts){}
 }

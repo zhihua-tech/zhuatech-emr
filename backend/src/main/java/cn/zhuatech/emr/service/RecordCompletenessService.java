@@ -8,8 +8,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class RecordCompletenessService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public CompletenessResult assess(CompletenessRequest request) {
         int completed = Math.min(request.completedFields(), request.mandatoryFields());
         double completeness = Math.round(completed * 1000.0 / request.mandatoryFields()) / 10.0;
@@ -24,11 +30,17 @@ public class RecordCompletenessService {
         return new CompletenessResult(completeness, status, issues);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record CompletenessRequest(@NotNull @Min(1) @Max(1000) Integer mandatoryFields,
         @NotNull @Min(0) @Max(1000) Integer completedFields,
         @NotNull @Min(0) @Max(1000) Integer unsignedOrders,
         @NotNull @Min(0) @Max(1000) Integer missingDiagnoses,
         @NotNull @Min(0) @Max(1000) Integer pendingReports,
         @NotNull @Min(0) @Max(10000) Integer hoursSinceDischarge) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record CompletenessResult(double completeness, String status, List<String> issues) {}
 }

@@ -6,11 +6,20 @@ import cn.zhuatech.emr.service.ClinicalRecordFinalizationService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @RestController
 @RequestMapping("/api/enterprise/emr")
 public class ClinicalRecordFinalizationController {
     private final ClinicalRecordFinalizationService service;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public ClinicalRecordFinalizationController(ClinicalRecordFinalizationService service) { this.service = service; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/clinical-record-finalization")
     public ApiResponse<ClinicalRecordFinalizationService.Assessment> assess(
             @Valid @RequestBody ClinicalRecordFinalizationService.Request request) {
